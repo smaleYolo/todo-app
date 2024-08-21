@@ -1,6 +1,19 @@
 export type TaskStatuses = 'Opened' | 'In Progress' | 'Completed' | string;
 export type Tag = string
-export type Priority = 1 | 2 | 3 | 4 | 5;
+export type Priority = 1 | 2 | 3;
+export type PriorityMeans = 'Low' | 'Medium' | 'High';
+
+export const PriorityValues: Record<Priority, PriorityMeans> = {
+  1: 'Low',
+  2: 'Medium',
+  3: 'High',
+};
+
+export const ReversePriorityValues: Record<PriorityMeans, Priority> = {
+  'Low': 1,
+  'Medium': 2,
+  'High': 3,
+};
 
 export interface ICreateTaskValues {
   title: string;

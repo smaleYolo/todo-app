@@ -2,6 +2,7 @@ import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { LoginPage, ProfilePage, RegisterPage, TaskDetailPage, TasksPage } from '@pages';
+import { EditTaskPage } from '../pages/edit-task-page.tsx';
 
 
 export const AuthRoutes = () => (
@@ -31,6 +32,10 @@ export const MainRoutes = () => (
       path="/tasks/:taskId"
       element={<TaskDetailPage />}
     />
+      <Route
+        path="/tasks/:taskId/edit"
+        element={<EditTaskPage />}
+      />
     <Route
       path="/profile"
       element={<ProfilePage />}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAppSelector } from '../store.ts';
-import { selectTotalTasks } from '../features/tasks/tasks-slice.ts';
+import { selectTasks, selectTotalTasks } from '../features/tasks/tasks-slice.ts';
 import Input from '../components/inputs/input.tsx';
 import { TasksList } from '../components/tasks-list.tsx';
 

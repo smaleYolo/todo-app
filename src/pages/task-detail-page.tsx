@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../store.ts';
 import {
   fetchTaskById, selectCurrentTask, selectCurrentTaskLoading
 } from '../features/tasks/tasks-slice.ts';
 import SpinnerLoader from '../components/loaders/SpinnerLoader.tsx';
+import { PriorityValues } from '@models';
+import { Button } from '../components/buttons/button.tsx';
 
 export const TaskDetailPage = () => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const { taskId } = useParams();
@@ -23,6 +26,7 @@ export const TaskDetailPage = () => {
   if (taskLoading === 'pending') {
     return  <SpinnerLoader />
   }
+
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4">
@@ -42,7 +46,7 @@ export const TaskDetailPage = () => {
 
           <div className="flex space-x-4">
             <span className="text-gray-400">Priority:</span>
-            <span className="text-primary">{currentTask?.priority}</span>
+            <span className="text-primary">{currentTask && PriorityValues[currentTask.priority]}</span>
           </div>
         </div>
 
@@ -56,13 +60,13 @@ export const TaskDetailPage = () => {
         </div>
 
         <div className="mt-6 flex space-x-4 justify-center">
-          <button className="bg-blue-dark text-white px-4 py-2 rounded-lg">
+          <Button
+            onClick={()=> navigate(`/tasks/${taskId}/edit`)}
+            variant='primary'
+          >
             Edit Task
-          </button>
-          <button
-            className="bg-danger text-white px-4 py-2 rounded-lg">
-            Delete Task
-          </button>
+          </Button>
+          <Button onClick={() => {}} variant='danger'>Delete Task</Button>
         </div>
       </div>
     </div>

@@ -25,7 +25,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      {isAuth && <Button btn_text={'Exit'} isAddBtn={false} onClick={() => dispatch(logout())}/>}
+      {isAuth && <Button onClick={() => dispatch(logout())}>Exit</Button>}
       {isAuth ? <MainRoutes /> : <AuthRoutes />}
       <Toaster position="top-right" />
     </BrowserRouter>
