@@ -76,7 +76,6 @@ export const tasksSlice = createSlice({
     selectTotalTasks: state => state.tasksList.length
   },
   reducers: {
-
   }, extraReducers: builder => {
     //FetchTasks
     builder.addCase(fetchTasks.fulfilled, (state, action) => {
