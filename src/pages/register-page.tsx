@@ -5,8 +5,8 @@ import toast from 'react-hot-toast';
 import { Button } from '../components/buttons/button.tsx';
 import Input from '../components/inputs/input.tsx';
 
-import { api, endpoints } from '@api';
-import { IRegisterValues, ISuccessResponse } from '@models';
+import { api } from '@api';
+import { IRegisterValues, ISuccessAuthResponse } from '@models';
 import { useAppDispatch } from '../store.ts';
 import { loginUser } from '../features/auth/auth-slice.ts';
 
@@ -22,7 +22,7 @@ export const RegisterPage = () => {
 
   const handleRegister = async () => {
     try {
-      const { token } = await endpoints.register({
+      const { token } = await api.register({
         username: userData.username,
         name: userData.name,
         password: userData.password
@@ -42,7 +42,7 @@ export const RegisterPage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center bg-gray-700 p-8 rounded-lg shadow-lg">
+    <div className="h-full flex flex-col items-center justify-center bg-gray-700 p-8 rounded-lg shadow-lg">
       <div>
         <h2 className="text-white text-2xl font-bold mb-4">Register</h2>
         <Input

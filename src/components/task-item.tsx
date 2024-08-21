@@ -1,27 +1,36 @@
 import React from 'react';
 import DeleteButton from './buttons/delete-button.tsx';
 import Checkbox from './inputs/checkbox.tsx';
+import { ITask, TaskStatuses } from '@models';
+import { Link } from 'react-router-dom';
 
-const TaskItem = ({ taskText, isCompleted, onToggle, onDelete }: {
+const TaskItem = ({ taskText, status, onToggle, onDelete, taskId }: {
+  taskId: ITask['id'],
   taskText: string,
-  isCompleted: boolean,
+  status: TaskStatuses,
   onToggle: () => void,
   onDelete: () => void
 }) => {
+
   return (
     <div
-      className={`flex justify-between items-center p-4 m-2 rounded-lg bg-gray-500 ${
-        isCompleted ? ' text-gray-300 line-through' : 'text-white'
+      className={`flex justify-between items-center p-4 bg-gray-500 rounded-lg transition-all duration-300 ease-in-out ${
+        status === 'Completed' ? 'text-gray-300 line-through' : 'text-white'
       }`}
     >
-      <div className="flex items-center">
-        <Checkbox checked={isCompleted} onChange={() => {}}/>
+      <div className="flex items-center space-x-4">
+        <Checkbox checked={status === 'Completed'} onChange={onToggle} />
 
-        <span className="ml-4">{taskText}</span>
+        <Link to={`/tasks/${taskId}`}>
+          <span
+            className="cursor-pointer hover:text-gray-200 transition duration-200"
+          >
+          {taskText}
+        </span>
+        </Link>
       </div>
 
-      <DeleteButton onClick={() => {}}/>
-
+      <DeleteButton onClick={onDelete} />
     </div>
   );
 };

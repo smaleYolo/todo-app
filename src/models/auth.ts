@@ -9,6 +9,6 @@ export interface IRegisterValues {
   name: string;
 }
 
-export interface ISuccessResponse {
+export interface ISuccessAuthResponse {
   token: string;
 }

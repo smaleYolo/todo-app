@@ -1,0 +1,1 @@
+export type LoadingStatuses = 'idle' | 'pending' | 'succeeded' | 'failed'

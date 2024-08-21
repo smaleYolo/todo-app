@@ -67,4 +67,4 @@ export class API {
   }
 }
 
-export const api = new API(baseUrl);
+export const request = new API(baseUrl);

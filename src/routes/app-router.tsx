@@ -8,11 +8,11 @@ export const AuthRoutes = () => (
   <Routes>
     <Route
       path="/"
-      element={<LoginPage/>}
+      element={<LoginPage />}
     />
     <Route
       path="/register"
-      element={<RegisterPage/>}
+      element={<RegisterPage />}
     />
     <Route
       path="*"
@@ -25,15 +25,15 @@ export const MainRoutes = () => (
   <Routes>
     <Route
       path="/tasks"
-      element={<TasksPage/>}
+      element={<TasksPage />}
     />
     <Route
       path="/tasks/:taskId"
-      element={<TaskDetailPage/>}
+      element={<TaskDetailPage />}
     />
     <Route
       path="/profile"
-      element={<ProfilePage/>}
+      element={<ProfilePage />}
     />
     <Route
       path="*"

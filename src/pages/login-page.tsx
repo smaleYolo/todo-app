@@ -5,10 +5,9 @@ import toast from 'react-hot-toast';
 import Input from '../components/inputs/input.tsx';
 import { Button } from '../components/buttons/button.tsx';
 
-import { endpoints } from '@api';
 import { ILoginValues } from '@models';
-import { loginUser } from '../features/auth/auth-slice.ts';
 import { useAppDispatch } from '../store.ts';
+import { loginUser } from '../features/auth/auth-slice.ts';
 
 export const LoginPage = () => {
   const dispatch = useAppDispatch();
@@ -19,8 +18,7 @@ export const LoginPage = () => {
 
   const handleLogin = async () => {
    try {
-     const { token } = await endpoints.login({username: userData.username, password: userData.password})
-     dispatch(loginUser({ token: token }));
+     await dispatch(loginUser({username: userData.username, password: userData.password}));
 
      toast.success('Login successful!');
    } catch (err) {
@@ -29,7 +27,7 @@ export const LoginPage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center bg-gray-700 p-8 rounded-lg shadow-lg">
+    <div className="h-full flex flex-col items-center justify-center bg-gray-700 p-8 rounded-lg shadow-lg">
       <div>
         <h2 className="text-white text-2xl font-bold mb-4">Login</h2>
         <Input
